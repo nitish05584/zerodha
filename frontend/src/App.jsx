@@ -1,10 +1,14 @@
 
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './landing_page/home/HomePage'
 
 const App = () => {
   return (
     <div>
-      ram
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   )
 }
