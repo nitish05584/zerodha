@@ -10,7 +10,7 @@ import App from "./App";
 import WatchList from "./WatchList";
 
 const api = axios.create({
-  baseURL: "https://zerodha-1-x3u4.onrender.com/api/dashboard",
+  baseURL: "https://zerodha-2-o0cu.onrender.com/api/dashboard",
 });
 
 const defaultSummary = {

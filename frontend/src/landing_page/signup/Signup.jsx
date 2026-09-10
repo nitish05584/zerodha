@@ -22,7 +22,7 @@ const Signup = () => {
     setMessage("");
 
     try {
-      const response = await axios.post("https://zerodha-1-x3u4.onrender.com/api/signup", formData);
+      const response = await axios.post("https://zerodha-2-o0cu.onrender.com/api/signup", formData);
       setMessage(response.data.message || "Signup successful");
       setFormData({ name: "", email: "", password: "" });
 
