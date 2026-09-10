@@ -11,9 +11,7 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:5175",
+  
   "https://zerodha-pied.vercel.app",
   "https://zerodha1-tau.vercel.app",
   "https://zerodha-2-o0cu.onrender.com",
