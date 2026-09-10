@@ -1,16 +1,18 @@
 import React from "react";
 
-const positions = [
+const defaultPositions = [
   { symbol: "NIFTY 50", qty: 1, side: "Buy", ltp: 24580, pnl: 220 },
   { symbol: "BANKNIFTY", qty: 2, side: "Sell", ltp: 52840, pnl: -380 },
   { symbol: "TCS", qty: 5, side: "Buy", ltp: 3615, pnl: 520 },
 ];
 
-const Positions = () => {
+const Positions = ({ data, loading }) => {
+  const positions = data && data.length ? data : defaultPositions;
+
   return (
     <div className="w-full">
       <div className="mb-8">
-        <h2 className="text-2xl font-medium text-gray-700">Positions</h2>
+        <h2 className="text-2xl font-medium text-gray-700">{loading ? "Loading..." : "Positions"}</h2>
         <p className="mt-2 text-sm text-gray-500">Open futures and options positions</p>
       </div>
 

@@ -1,17 +1,19 @@
 import React from "react";
 
-const holdings = [
+const defaultHoldings = [
   { symbol: "TCS", qty: 20, avg: 3450, ltp: 3615, pnl: 3300 },
   { symbol: "INFY", qty: 35, avg: 1425, ltp: 1490, pnl: 2275 },
   { symbol: "RELIANCE", qty: 10, avg: 2820, ltp: 2910, pnl: 900 },
   { symbol: "HDFCBANK", qty: 15, avg: 1680, ltp: 1715, pnl: 525 },
 ];
 
-const Holding = () => {
+const Holding = ({ data, loading }) => {
+  const holdings = data && data.length ? data : defaultHoldings;
+
   return (
     <div className="w-full">
       <div className="mb-8">
-        <h2 className="text-2xl font-medium text-gray-700">Holdings</h2>
+        <h2 className="text-2xl font-medium text-gray-700">{loading ? "Loading..." : "Holdings"}</h2>
         <p className="mt-2 text-sm text-gray-500">Your current portfolio positions</p>
       </div>
 

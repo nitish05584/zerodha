@@ -1,22 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Orders = () => {
-  return (
-    <div className="w-full min-h-[70vh] flex items-center justify-center">
-      <div className="flex flex-col items-center justify-center text-center">
+const Orders = ({ data, loading }) => {
+  const orders = data && data.orders ? data.orders : [];
 
-        <p className="text-gray-500 text-sm sm:text-base mb-5">
-          You haven't placed any orders today
+  return (
+    <div className="flex min-h-[70vh] w-full items-center justify-center">
+      <div className="flex flex-col items-center justify-center text-center">
+        <p className="mb-5 text-sm text-gray-500 sm:text-base">
+          {loading ? "Loading orders..." : data?.message || "You haven't placed any orders today"}
         </p>
 
-        <Link
-          to="/"
-          className="px-6 py-2.5 bg-orange-500 text-white rounded-md text-sm font-medium hover:bg-orange-600 transition duration-200 no-underline"
-        >
-          Get started
-        </Link>
-
+        {orders.length === 0 && (
+          <Link
+            to="/"
+            className="rounded-md bg-orange-500 px-6 py-2.5 text-sm font-medium text-white no-underline transition duration-200 hover:bg-orange-600"
+          >
+            Get started
+          </Link>
+        )}
       </div>
     </div>
   );
