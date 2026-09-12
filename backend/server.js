@@ -10,14 +10,7 @@ const userRoutes = require("./routes/userRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "http://localhost:3000",
-  "https://zerodha-pied.vercel.app",
-  "https://zerodha1-tau.vercel.app",
-  "https://zerodha-2-o0cu.onrender.com",
-];
+
 
 dotenv.config();
 connectDB();
@@ -25,20 +18,17 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-        return;
-      }
-      callback(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:3000",
+        "https://zerodha-pied.vercel.app",
+        "https://zerodha1-tau.vercel.app",
+    ],
+    credentials: true
+}));
 
 app.use("/api", userRoutes);
 app.use("/api/dashboard", dashboardRoutes);
